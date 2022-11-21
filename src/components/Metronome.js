@@ -1,5 +1,7 @@
 import {React, useState} from 'react';
 import {Container, Row, Col, Form, Input, Label, Button } from 'reactstrap';
+import firstclick from '../assets/sounds/click1.wav';
+import secondclick from '../assets/sounds/click2.wav';
 
 
 const Metronome = () => {
@@ -10,7 +12,13 @@ const Metronome = () => {
         setBpm(event.target.value);
      };
 
-    console.log(bpm);
+     const click1 = new Audio(firstclick);
+     const click2 = new Audio(secondclick);
+
+     const startStop = () => {
+        click1.play();
+     };
+
     return (
         <Container fluid className='metronome'>
             <Row>
@@ -26,7 +34,8 @@ const Metronome = () => {
                             onChange={chooseBpm}
                         />
                     </Form>
-                    <Button>
+                    <Button
+                        onClick={startStop}>
                         {playing ? 'Stop' : 'Start'}
                     </Button>
                 </Col>
