@@ -3,21 +3,27 @@ import {Container, Row, Col, Form, Input, Label, Button } from 'reactstrap';
 
 
 const Metronome = () => {
-    const bpm = useState(60);
+    const [bpm, setBpm] = useState(40);
     const [playing, setPlaying] = useState(false);
 
+    const chooseBpm = (event) => {
+        setBpm(event.target.value);
+     };
+
+    console.log(bpm);
     return (
         <Container fluid className='metronome'>
             <Row>
                 <Col>
                     <Form>
-                        <Label for='bpm'>{bpm} BPM</Label>
+                        <Label for='chooseBpm'>{bpm} BPM</Label>
                         <Input 
-                            id='bpm'
+                            id='chooseBpm'
                             type='range'
                             min='40'
                             max='240'
                             value={bpm}
+                            onChange={chooseBpm}
                         />
                     </Form>
                     <Button>
